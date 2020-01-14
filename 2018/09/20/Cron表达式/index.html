@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/football.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="GageLiu">
+  <meta name="keywords" content="">
+  <title>Cron表达式 ~ GageLiu&#39;s Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>GageLiu's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期四, 九月 20日 2018, 5:34 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="Cron表达式"><a href="#Cron表达式" class="headerlink" title="Cron表达式"></a>Cron表达式</h2><p><strong>转载：</strong><a href="https://www.cnblogs.com/javahr/p/8318728.html" target="_blank" rel="noopener">Cron表达式</a></p>
+<h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><p>Cron表达式是一个字符串，字符串以 5——6个空格隔开，分为6或7个域，每一个域代表一个含义</p>
+<p>有以下两种表达格式：</p>
+<p>　　（1） Seconds Minutes Hours DayofMonth Month DayofWeek Year</p>
+<p>　　（2）Seconds Minutes Hours DayofMonth Month DayofWeek</p>
+<h3 id="一、结构"><a href="#一、结构" class="headerlink" title="一、结构"></a>一、结构</h3><p>corn从左到右（用空格隔开）：秒 分 小时 月份 星期中的日期 年份</p>
+<h3 id="二、各字段之间的含义"><a href="#二、各字段之间的含义" class="headerlink" title="二、各字段之间的含义"></a>二、各字段之间的含义</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>允许值</th>
+<th>允许的特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒（Seconds）</td>
+<td>0~59的整数</td>
+<td>, - * / 四个字符</td>
+</tr>
+<tr>
+<td>分（<em>Minutes</em>）</td>
+<td>0~59的整数</td>
+<td>, - * / 四个字符</td>
+</tr>
+<tr>
+<td>小时（<em>Hours</em>）</td>
+<td>0~23的整数</td>
+<td>, - * / 四个字符</td>
+</tr>
+<tr>
+<td>日期（<em>DayofMonth</em>）</td>
+<td>1~31的整数（但是你需要考虑你月的天数）</td>
+<td>,- * ? / L W C 八个字符</td>
+</tr>
+<tr>
+<td>月份（<em>Month</em>）</td>
+<td>1~12的整数或者 JAN-DEC</td>
+<td>, - * / 四个字符</td>
+</tr>
+<tr>
+<td>星期（<em>DayofWeek</em>）</td>
+<td>1~7的整数或者 SUN-SAT （1=SUN）</td>
+<td>, - * ? / L C # 八个字符</td>
+</tr>
+<tr>
+<td>年(可选，留空)（<em>Year</em>）</td>
+<td>1970~2099</td>
+<td>, - * / 四个字符</td>
+</tr>
+</tbody></table>
+<p>每一个域都使用数字，但还可以出现如下特殊字符，他们的含义是：</p>
+<p>（1） <em>：表示匹配该域的任意值；假如在Minutes域使用</em> ，即表示每分钟都会触发事件；</p>
+<p>（2）?：只能用在DayofMonth和DayofWeek两个域。它也匹配域的任意值，但实际不会。因为DayofMonth和DayofWeek会相互影响。例如想在每月的20日触发调度，不管20日到底是星期几，则只能使用如下写法： 13 13 15 20 <em>? ， 其中最后一位只能用？，而不能使用</em> ，如果使用 * 表示不管星期几都会触发，实际上并不是这样。</p>
+<p>（3）-：表示范围。例如在Minutes域使用5-20，表示从5分到20分钟每分钟触发一次</p>
+<p>（4）/：表示起始时间开始触发，然后每隔固定时间触发一次。例如在Minutes域使用5/20,则意味着5分钟触发一次，而25，45等分别触发一次.</p>
+<p>（5）,：表示列出枚举值。例如：在Minutes域使用5,20，则意味着在5和20分每分钟触发一次。</p>
+<p>（6）L：表示最后，只能出现在DayofWeek和DayofMonth域。如果在DayofWeek域使用5L,意味着在最后的一个星期四触发。</p>
+<p>（7）W:表示有效工作日(周一到周五),只能出现在DayofMonth域，系统将在离指定日期的最近的有效工作日触发事件。例如：在 DayofMonth使用5W，如果5日是星期六，则将在最近的工作日：星期五，即4日触发。如果5日是星期天，则在6日(周一)触发；如果5日在星期一到星期五中的一天，则就在5日触发。另外一点，<strong>W的最近寻找不会跨过月份</strong> 。</p>
+<p>（8）LW:这两个字符可以连用，表示在某个月最后一个工作日，即最后一个星期五。</p>
+<p>（9）#:用于确定每个月第几个星期几，只能出现在DayofMonth域。例如在4#2，表示某月的第二个星期三。</p>
+<h3 id="三、常用表达式例子"><a href="#三、常用表达式例子" class="headerlink" title="三、常用表达式例子"></a>三、常用表达式例子</h3><p>　　（1）<strong>0 0 2 1 * ? *</strong> 表示在每月的1日的凌晨2点调整任务</p>
+<p>　　（2）<strong>0 15 10 ? * MON-FRI</strong> 表示周一到周五每天上午10:15执行作业</p>
+<p>　　（3）<strong>0 15 10 ? 6L 2002-2006</strong> 表示2002-2006年的每个月的最后一个星期五上午10:15执行作</p>
+<p>　　（4）<strong>0 0 10,14,16 * * ?</strong> 每天上午10点，下午2点，4点</p>
+<p>　　（5）<strong>0 0/30 9-17 * * ?</strong> 朝九晚五工作时间内每半小时</p>
+<p>　　（6）<strong>0 0 12 ? * WED</strong> 表示每个星期三中午12点</p>
+<p>　　（7）<strong>0 0 12 * * ?</strong> 每天中午12点触发</p>
+<p>　　（8）<strong>0 15 10 ? * *</strong> 每天上午10:15触发</p>
+<p>　　（9）<strong>0 15 10 * * ?</strong> 每天上午10:15触发</p>
+<p>　　（10）<strong>0 15 10 * ?</strong> 每天上午10:15触发</p>
+<p>　　（11）<strong>0 15 10 * * ? 2005</strong> 2005年的每天上午10:15触发</p>
+<p>　　（12）<strong>0 * 14 ?</strong> 在每天下午2点到下午2:59期间的每1分钟触发</p>
+<p>　　（13）<strong>0 0/5 14 * * ?</strong> 在每天下午2点到下午2:55期间的每5分钟触发</p>
+<p>　　（14）<strong>0 0/5 14,18 * * ?</strong> 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发</p>
+<p>　　（15）<strong>0 0-5 14 * * ?</strong> 在每天下午2点到下午2:05期间的每1分钟触发</p>
+<p>　　（16）<strong>0 10,44 14 ? 3 WED</strong> 每年三月的星期三的下午2:10和2:44触发</p>
+<p>　　（17）<strong>0 15 10 ? * MON-FRI</strong> 周一至周五的上午10:15触发</p>
+<p>　　（18）<strong>0 15 10 15 * ?</strong> 每月15日上午10:15触发</p>
+<p>　　（19）<strong>0 15 10 L * ?</strong> 每月最后一日的上午10:15触发</p>
+<p>　　（20）<strong>0 15 10 ? * 6L</strong> 每月的最后一个星期五上午10:15触发</p>
+<p>　　（21）<strong>0 15 10 ? * 6L 2002-2005</strong> 2002年至2005年的每月的最后一个星期五上午10:15触发</p>
+<p>　　（22）<strong>0 15 10 ? * 6#3</strong> 每月的第三个星期五上午10:15触发</p>
+<h3 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h3><p>　　（1）有些子表达式能包含一些范围或列表</p>
+<p>　　例如：子表达式（天（星期））可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT”</p>
+<p>“*”字符代表所有可能的值</p>
+<p>　　因此，“ <em>” 在子表达式（月）里表示每个月的含义，“</em> ” 在子表达式（天（星期））表示星期的每一天</p>
+<p>　　“ / ”字符用来指定数值的增量<br>　　例如：在子表达式（分钟）里的“0/15”表示从第0分钟开始，每15分钟<br>在子表达式（分钟）里的“3/20”表示从第3分钟开始，每20分钟（它和“3，23，43”）的含义一样</p>
+<p>　　“？”字符仅被用于天（月）和天（星期）两个子表达式，表示不指定值<br>　　当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的值设为“？”</p>
+<p>　　“L” 字符仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写<br>　　但是它在两个子表达式里的含义是不同的。<br>　　在天（月）子表达式中，“L”表示一个月的最后一天<br>　　在天（星期）自表达式中，“L”表示一个星期的最后一天，也就是SAT</p>
+<p>　　如果在“L”前有具体的内容，它就具有其他的含义了</p>
+<p>　　例如：“6L”表示这个月的倒数第６天，“FRIL”表示这个月的最一个星期五<br>　　注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <a style="display: block;text-align: center;color:#009ACD; font-size:30px;"><b>↘️支持作者，赞赏一下^_^↙️</b><img src="/img/zscode.jpg" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;"></a>
+    </div>
+  </div>
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Cron表达式&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
