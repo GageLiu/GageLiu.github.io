@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/football.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="GageLiu">
+  <meta name="keywords" content="">
+  <title>GageLiu&#39;s Blog</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>GageLiu's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/pink.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/10/01/Git%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/" target="_self">
+          <img src="/img/indexImg/javautil.png" srcset="/img/loading.gif" alt="Git命令操作大全" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/10/01/Git%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/">
+        <p class="h4 index-header">Git命令操作大全</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">作者：[已重置]
+链接：https://zhuanlan.zhihu.com/p/25868120
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+一、新建代码库# 在当前目录新建一个 Git 代码库
+$ git init
+
+# 新建一个目录，将其初始化为 Git 代码库
+$ git init [project-name]
+
+# 下载一个项目和它的整个代码历史
+$ git clone [url]
+二、配置Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+# 显示当前的 Git 配置
+$ git config --list
+
+# 编辑 Git 配置文件
+$ git config -e [--global]
+
+# 设置提交代码时的用户信息
+$ git config [--global] user.name &quot;[name]&quot;
+$ git config [--global] user.email &quot;[email address]&quot;
+三、增加/删除文件# 添加指定</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-10-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          
+            <a href="/tags/Git">Git</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+          <img src="/img/indexImg/dm_singleton.png" srcset="/img/loading.gif" alt="设计模式——单例模式" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">设计模式——单例模式</p>
+        
+        
+          
+          
+        
+        <div class="index-excerpt" style="max-height: none;">
+          <div class="index-text mb-1">单例模式特点单例类只能有一个实例；
+单例类必须自己创建自己的唯一实例；
+单例类必须给所有其他对象提供这一实例。...</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/21/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" target="_self">
+          <img src="/img/indexImg/dm_decorator.png" srcset="/img/loading.gif" alt="设计模式——装饰器模式" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/21/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+        <p class="h4 index-header">设计模式——装饰器模式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">设计模式——装饰器模式2018-09-21
+
+设计模式
+
+
+概述
+最近在工作中接触到了有关装饰器模式的代码，所以想总结一下关于这方面的知识；
+比方说，快下班了，肚子咕噜咕噜的叫了，于是乎今天打算在楼下的97烧腊店解决晚餐；进到店里，菜单上写着叉烧饭、猪脚饭、鸡腿饭、鸭腿饭、肥肠饭、烧鹅饭、白切鸡饭……唏哩呼噜列了一大摞，菜式丰富对于顾客来说选择自然也就多，但是选择一多起来对于我这种选择困难症的人来说那就是一场不亚于我当初高考后是选清华还是北大的抉择（╮(￣▽￣)╭不过由于他们都不来联系我，我一气之下把他们拉进了黑名单），好在贴心的老板娘早就想到我们会纠结，热心的推出了双p,呸，是双拼，多拼的套餐，这也就意味着我可以吃叉烧拼猪脚饭或叉烧拼鸭腿，又或者是烧鹅拼白切鸡饭，当然你还可以选择巨无霸套餐之——叉烧拼猪脚拼鸡腿拼鸭腿拼肥肠拼烧鹅拼白切鸡饭！又名拼多多饭！！！（拼多多看到了请打广告费，谢谢）
+假设要把这样的一个饭店卖烧腊饭的流程用代码实现的话，那么你得首先定义一个烧腊饭的基类Rice，其中定义其基本的方法，比如描述和价格等，而所有种类的烧腊饭将会继承这个基类，并且覆盖这些方法；那么如果</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/21/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" target="_self">
+          <img src="/img/indexImg/javajvm.png" srcset="/img/loading.gif" alt="Java虚拟机类加载机制" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/21/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
+        <p class="h4 index-header">Java虚拟机类加载机制</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Java虚拟机类加载机制
+转载: Java虚拟机类加载机制
+看到这个题目，很多人会觉得我写我的java代码，至于类，JVM爱怎么加载就怎么加载，博主有很长一段时间也是这么认为的。随着编程经验的日积月累，越来越感觉到了解虚拟机相关要领的重要性。闲话不多说，老规矩，先来一段代码吊吊胃口。
+public class SSClass
+{
+    static
+    {
+        System.out.println(&quot;SSClass&quot;);
+    }
+}    
+public class SuperClass extends SSClass
+{
+    static
+    {
+        System.out.println(&quot;SuperClass init!&quot;);
+    }
+
+    public static int value = 123;
+
+    public SuperClass()
+    {
+        System.out.println(&quot;init SuperClass&quot;);
+    }
+}
+p</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-21&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA">JVM虚拟机</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/JVM%E8%99%9A%E6%8B%9F%E6%9C%BA">JVM虚拟机</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/20/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
+          <img src="/img/indexImg/javautil.png" srcset="/img/loading.gif" alt="Cron表达式" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/20/Cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        <p class="h4 index-header">Cron表达式</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Cron表达式转载：Cron表达式
+概述：Cron表达式是一个字符串，字符串以 5——6个空格隔开，分为6或7个域，每一个域代表一个含义
+有以下两种表达格式：
+　　（1） Seconds Minutes Hours DayofMonth Month DayofWeek Year
+　　（2）Seconds Minutes Hours DayofMonth Month DayofWeek
+一、结构corn从左到右（用空格隔开）：秒 分 小时 月份 星期中的日期 年份
+二、各字段之间的含义
+
+
+字段
+允许值
+允许的特殊字符
+
+
+
+秒（Seconds）
+0~59的整数
+, - * / 四个字符
+
+
+分（Minutes）
+0~59的整数
+, - * / 四个字符
+
+
+小时（Hours）
+0~23的整数
+, - * / 四个字符
+
+
+日期（DayofMonth）
+1~31的整数（但是你需要考虑你月的天数）
+,- * ? / L W C 八个字符
+
+
+月份（Month）
+1~12的整数或者 JAN-DEC
+, - * / 四个字符
+
+
+星期（DayofWeek）
+1~7的整数或者 SUN-SAT （</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/20/Informix%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/" target="_self">
+          <img src="/img/indexImg/javautil.png" srcset="/img/loading.gif" alt="informix时间函数" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/20/Informix%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/">
+        <p class="h4 index-header">informix时间函数</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Informix时间函数转载：Informix时间函数函数：
+DATE
+
+DATE(VARCHAR(10))返回DATE类型
+该函数以一个字符串变量为参数，其格式由环境变量 DBDATE 指定，并返回一个 DATE 类型。US English 地区的缺省格式是“MDY4/”。
+
+DATE(DATETIME) 返回 DATE 类型
+这个函数与上一个函数相同，但是其输入参数是可以为任意精度的 DATETIME。
+
+DATE(INTEGER) 返回 DATE 类型
+INTEGER 参数表示从 1899 年 12 月 31 日以来的天数。
+
+
+
+DAY
+
+DAY(DATE) 返回 INTEGER 类型
+DAY 函数返回月中的日，格式为 INTEGER。
+
+DAY(DATETIME) 返回 INTEGER 类型
+与上一个函数相同，只是这个函数的输入参数为任意精度的 DATETIME。
+
+
+
+EXTEND
+
+EXTEND(DATE, precision) 返回 DATETIME 类型
+EXTEND 函数调整 DATE 参数的精度，并返回适当的 DATETIME。由于说起来有点儿模糊，这里举一个例子</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%B7%A5%E5%85%B7%E5%AD%97%E5%85%B8">工具字典</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2018/09/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/" target="_self">
+          <img src="/img/indexImg/javabase.png" srcset="/img/loading.gif" alt="面向对象设计五大原则" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2018/09/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/">
+        <p class="h4 index-header">面向对象设计五大原则</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">面向对象设计五大原则谨记：“SOLID”
+
+Single Responsibility Principle——单一职责原则
+思想：一个类应该只有一个引起它变化的原因；
+
+
+
+Open Closed Principle——开放封闭原则
+思想：对扩展开放，对修改封闭；
+如何在不修改类的源代码，通过添加新代码来增强现有类的行为？
+答;通过 抽象(Interface和抽象基类)实现OCP的核心思想就是对抽象编程，让类依赖于固定的抽象，对修改就是封闭的；而通过面向丢下的继承和多态机制，通过覆写方法改变固有行为，实现新的扩展方法，对于扩展就是开放的；
+
+Liskov Subsitution Principle——里氏替换原则
+思想：子类必须能替换掉它的父类型；
+
+InterFace Segregation Principle——接口隔离原则
+思想：使用多个小的专门的接口，而不要都是用一个大的总接口；
+
+Dependency Inversion Principle——依赖倒置原则
+思想：高层模块不应该依赖底层模块，两者都应该抽象，抽象不应该依赖细节，细节应该依赖于抽象
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2018-09-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Java%E5%9F%BA%E7%A1%80">Java基础</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Java%E5%9F%BA%E7%A1%80">Java基础</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "人如果没有梦想，那和一条咸鱼又有什么区别呢？     思考..................................有，咸鱼可以送粥，人不行......&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 100,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
