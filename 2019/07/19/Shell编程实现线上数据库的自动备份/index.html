@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="GageLiu">
   <meta name="keywords" content="">
-  <title>设计模式——装饰器模式 ~ GageLiu&#39;s Blog</title>
+  <title>Shell编程实现线上数据库的自动备份 ~ GageLiu&#39;s Blog</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -122,7 +122,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期五, 九月 21日 2018, 5:31 下午
+                  星期五, 七月 19日 2019, 9:05 晚上
                 </p>
               
 
@@ -131,7 +131,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    1.6k 字
+                    422 字
                   </span>&nbsp;
                 
 
@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      6 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -172,174 +172,27 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="设计模式——装饰器模式"><a href="#设计模式——装饰器模式" class="headerlink" title="设计模式——装饰器模式"></a>设计模式——装饰器模式</h1><p>2018-09-21</p>
-<ul>
-<li><a href="">设计模式</a></li>
-</ul>
+            <h2 id="解决啥子问题？"><a href="#解决啥子问题？" class="headerlink" title="解决啥子问题？"></a>解决啥子问题？</h2><p>​    最近项目要开始正式上线了，为了以防万一数据库数据出错了想要恢复，那么就得给数据库做下备份，当然，所有能计算机完成的事情那么就别用人去完成，要不一个人守着时间每天定时去拷贝一份数据库那就太傻了；所以，我们需要实现的就是三点：</p>
 <ol>
-<li><p><strong>概述</strong></p>
-<p>最近在工作中接触到了有关装饰器模式的代码，所以想总结一下关于这方面的知识；</p>
-<p>比方说，快下班了，肚子咕噜咕噜的叫了，于是乎今天打算在楼下的97烧腊店解决晚餐；进到店里，菜单上写着叉烧饭、猪脚饭、鸡腿饭、鸭腿饭、肥肠饭、烧鹅饭、白切鸡饭……唏哩呼噜列了一大摞，菜式丰富对于顾客来说选择自然也就多，但是选择一多起来对于我这种选择困难症的人来说那就是一场不亚于我当初高考后是选清华还是北大的抉择（╮(￣▽￣)╭不过由于他们都不来联系我，我一气之下把他们拉进了黑名单），好在贴心的老板娘早就想到我们会纠结，热心的推出了双拼，多拼的套餐，这也就意味着我可以吃叉烧拼猪脚饭或叉烧拼鸭腿，又或者是烧鹅拼白切鸡饭，当然你还可以选择巨无霸套餐之——叉烧拼猪脚拼鸡腿拼鸭腿拼肥肠拼烧鹅拼白切鸡饭！又名拼多多饭！！！（拼多多看到了请打广告费，谢谢）</p>
-<p>假设要把这样的一个饭店卖烧腊饭的流程用代码实现的话，那么你得首先定义一个烧腊饭的基类Rice，其中定义其基本的方法，比如描述和价格等，而所有种类的烧腊饭将会继承这个基类，并且覆盖这些方法；那么如果你把那些双拼多拼的任意组合都写上去的话，你起码得写上百个子类，这种方式显然不符合软件工程里所推崇的“多用组合，少用继承”的原则；</p>
-<p>所以把上述的方法用一种更加富有弹性的方案来替代，那就是采用装饰器模式来实现；</p>
-</li>
-<li><p><strong>思想</strong></p>
-<p>装饰器模式中，有四大块，分别是:</p>
-<p>基类Component(组件)、基类实现类ConcreteComponent</p>
-<p>抽象装饰类Decorator（装饰）、装饰类实现类ConcreteDecorator</p>
-<p>其中，基类是最顶层的类也就是其它三个的父类，也就是祖宗类（滑稽.jpg），基类实现类和装饰类都是直接继承自基类Component,而我们所要实现的装饰类实现类就是我们的叉烧拼猪脚饭！！！（额…..md饿疯了吧）就是我们所要实现的不同组合；</p>
-<p>以下是装饰器模式的类图：</p>
-<p><img src="https://ws1.sinaimg.cn/large/0062Zwz8gy1fvh0c9z0hrj30q70eumxt.jpg" srcset="/img/loading.gif" alt="img"></p>
-<p>图源：知乎——前端客栈</p>
-</li>
-<li><p><strong>实现</strong></p>
-<p>（1）定义我们的抽象基类Rice（也就是组件），其它的类都是它的子类or孙子类！！！（滑稽.jpg）</p>
-<pre><code class="java">//定义我们的基类Rice
-public abstract class Rice{
-    public abstract String getDescription();
-}</code></pre>
-<p>（2）接下来定义我们的具体实现类烧腊饭ShaolaRice（组件的具体实现类）</p>
-<pre><code class="java">public class ShaolaRice extends Rice{
-    @Override
-    public String getDescription(){
-        return &quot;饭&quot;;
-    }
-}</code></pre>
-<p>（3）定义抽象装饰类——配菜基类</p>
-<pre><code class="java">public abstract class Peicai extends Rice{
-    //要添加一个基类的引用
-    protected Rice rice;
-    @Override
-    public String getDescription(){
-        return &quot;&quot;;
-    }
-}</code></pre>
-<p>（4）定义装饰类实现类——配菜实现类</p>
-<pre><code class="java">//叉烧
-public class Chashao extends Peicai{
-    public Chashao(Rice rice){
-        this.rice = rice;
-    }
-    public String getDesciption(){
-        //这个判断只是为了在组合时多加个拼字
-        if(rice.getDescription().length() &gt; 2){
-            return &quot;叉烧拼&quot;+rice.getDescription();
-        }
-        return &quot;叉烧&quot;+rice.getDescription();
-    }
-}
-//烧鸭
-public class Shaoya extends Peicai{
-    public Shaoya(Rice rice){
-        this.rice = rice;
-    }
-    public String getDescription(){
-        //这个判断只是为了在组合时多加个拼字
-        if(rice.getDescription().length() &gt; 2){
-            return &quot;烧鸭拼&quot;+rice.getDescription();
-        }
-        return &quot;烧鸭&quot;+rice.getDescription();
-    }
-}
-//烧鸡
-public class Shaoji extends Peicai{
-    public Shaoji(Rice rice){
-        this.rice = rice;
-    }
-    public String getDescription(){
-        //这个判断只是为了在组合时多加个拼字
-        if(rice.getDescription().length() &gt; 2){
-            return &quot;烧鸡拼&quot;+rice.getDescription();
-        }
-        return &quot;烧鸡&quot;+rice.getDescription();
-    }
-}
-//肥肠
-public class Feichang extends Peicai{
-    public Feichang(Rice rice){
-        this.rice = rice;
-    }
-    public String getDescription(){
-        //这个判断只是为了在组合时多加个拼字
-        if(rice.getDescription().length() &gt; 2){
-            return &quot;肥肠拼&quot;+rice.getDescription();
-        }
-        return &quot;肥肠&quot;+rice.getDescription();
-    }
-}
-//猪脚
-public class Zhujiao extends Peicai{
-    public Zhujiao(Rice rice){
-        this.rice = rice;
-    }
-    public String getDescription(){
-        //这个判断只是为了在组合时多加个拼字
-        if(rice.getDescription().length() &gt; 2){
-            return &quot;猪脚拼&quot;+rice.getDescription();
-        }
-        return &quot;猪脚&quot;+rice.getDescription();
-    }
-}
-剩下的那些........你懂我意思吧？.jpg</code></pre>
-<p>(5）万事具备，只差筷子了！</p>
-<pre><code class="java">//测试（开吃！！！）
-public class TestEat {
-    public static void main(String[] args) {
-        //老板娘，我要叉烧拼猪脚饭！
-        Rice shaolaRice = new ShaolaRice();
-        //给饭上加配菜（装饰）
-        //写法1
-        //shaolaRice = new Zhujiao(shaolaRice);
-        //shaolaRice = new Chashao(shaolaRice);
-        //写法2：
-        shaolaRice = new Chashao(new Zhujiao(shaolaRice));
-
-        //拼多多套餐饭！
-        Rice shaolaRice2 = new ShaolaRice();
-        shaolaRice2 = new Chashao(new Zhujiao(new Shaoya(new Shaoji(new Feichang(shaolaRice2)))));
-
-        System.out.println(&quot;哇！&quot;+shaolaRice.getDescription()+&quot;好好味啊！！！&quot;);
-        System.out.println(&quot;哇！&quot;+shaolaRice2.getDescription()+&quot;好好味啊！！！&quot;);
-
-    }
-}</code></pre>
-<p>测试结果：</p>
-<p><img src="https://ws1.sinaimg.cn/large/0062Zwz8gy1fvh7jwq1ahj30bm01waa4.jpg" srcset="/img/loading.gif" alt="img"></p>
-</li>
-<li><p><strong>总结</strong></p>
-<p><strong>优点：</strong></p>
-<ul>
-<li>装饰器模式的优点在于不用在程序尚未执行的时候就创建大量的类，取而代之的是在程序运行时根据需要动态的组合我们所需要的类；</li>
-<li>扩展性好，就如同上面的例子，哪天老板娘又发明出什么新菜色，像什么烧鹅，鸭腿，兔肉（兔兔那么可爱，你怎么能吃兔兔o(╥﹏╥)o.gif），这时候我们只需要继承装饰类基类，就能完成添加新菜色的任务啦~；</li>
-</ul>
-<p><strong>缺点：</strong></p>
-<ul>
-<li>不易调试，过多的使用装饰器模式会导致系统由许多类似的小的对象组成，会产生大量的装饰者类；</li>
-<li>肚子容易饿……下次举例子千万不要举吃东西的；</li>
-</ul>
-<p><strong>适用场景：</strong></p>
-<ul>
-<li>为独立的对象动态并透明的添加职责，意思是，不影响其它对象；</li>
-<li>处理能收回的职责；</li>
-<li>当不能通过子类来扩充时。有时候一大堆独立的扩充是可能的，但将激增子类来支持每种扩充间的组合。或者一个类的定义可能被隐藏或不能用于生成子类。</li>
-</ul>
-</li>
-<li><p><strong>应用</strong></p>
-<ul>
-<li>Java中的IO流</li>
-<li>Python中的装饰器语法</li>
-</ul>
-</li>
-<li><p><strong>引用</strong></p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/25003369" target="_blank" rel="noopener">设计模式之装饰器模式——前端客栈（知乎）</a></li>
-<li><a href="http://blog.qiji.tech/archives/11823" target="_blank" rel="noopener">[JAVA]设计模式之装饰器模式</a></li>
-<li><a href="http://dreamrunner.org/blog/2014/05/03/%E6%B5%85%E8%B0%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3/" target="_blank" rel="noopener">浅谈设计模式三: 装饰器模式(Decorator)</a></li>
-<li><a href="https://blog.csdn.net/android_zyf/article/details/68343953" target="_blank" rel="noopener">Java：一夜一发设计模式（一）——装饰者模式</a></li>
-</ul>
-</li>
+<li>实现备份</li>
+<li>定时备份</li>
+<li>删除备份</li>
 </ol>
+<h2 id="咋子解决"><a href="#咋子解决" class="headerlink" title="咋子解决"></a>咋子解决</h2><h3 id="1-实现备份"><a href="#1-实现备份" class="headerlink" title="1.实现备份"></a>1.实现备份</h3><p>​    脚本语言有很多种，大家都熟悉的有python和shell，而linux下当然是用shell方便啦，大家可以先去熟悉一下shell编程的基本语法；</p>
+<p>(1)建立一个shell文件“autoBackup.sh”</p>
+<pre><code class="shell">touch autoBackup.sh</code></pre>
+<p>(2)进入文件编辑</p>
+<pre><code class="shell">vim autoBackup.sh</code></pre>
+<p>(3)#!/bin/sh”是对shell的声明，说明你所用的是那种类型的shell及其路径所在</p>
+<p>引用：<a href=""><a href="http://blog.sina.com.cn/s/blog_6336857901019zyz.html">http://blog.sina.com.cn/s/blog_6336857901019zyz.html</a></a></p>
+<p>（#! /bin/sh 是指此脚本使用/bin/sh来解释执行，#!是特殊的表示符，其后面跟的是解释此脚本的shell的路径）如果没有声明，则脚本将在默认的shell中执行，默认shell是由用户所在的系统定义为执行shell脚本的shell.如果脚本被编写为在Kornshell ksh中运行，而默认运行shell脚本的为C shell csh,则脚本在执行过程中很可能失败。所以建议大家就把”#!/bin/sh”当成C 语言的main函数一样，写shell必须有，以使shell程序更严密。</p>
+<pre><code>#!/bin/sh
 
+# Database info
+DB_USER=&quot;qbtlp2&quot;
+DB_PASS=&quot;P2i0c1c7@)!&amp;)#_qbtlp2&quot;
+DB_HOST=&quot;120.79.117.159&quot;
+TDDB_NAME=&quot;qbtlp2&quot;</code></pre><h3 id="2-定时备份"><a href="#2-定时备份" class="headerlink" title="2.定时备份"></a>2.定时备份</h3><h3 id="3-删除备份"><a href="#3-删除备份" class="headerlink" title="3.删除备份"></a>3.删除备份</h3>
             <hr>
           </div>
           <br>
@@ -349,7 +202,7 @@ public class TestEat {
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>
+                  <a class="hover-with-bg" href="/categories/linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">linux基础知识</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -358,7 +211,9 @@ public class TestEat {
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>
+                  <a class="hover-with-bg" href="/tags/linux">linux</a>
+                
+                  <a class="hover-with-bg" href="/tags/shell">shell</a>
                 
               </span>
             
@@ -525,7 +380,7 @@ public class TestEat {
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "设计模式——装饰器模式&nbsp;",
+        "Shell编程实现线上数据库的自动备份&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 100,
